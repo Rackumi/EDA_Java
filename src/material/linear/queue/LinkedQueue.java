@@ -1,4 +1,4 @@
-package material.linear;
+package material.linear.queue;
 
 public class LinkedQueue<E> implements Queue<E> {
     private int size;

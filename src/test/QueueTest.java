@@ -1,8 +1,8 @@
 package test;
 
-import material.linear.ArrayQueue;
-import material.linear.LinkedQueue;
-import material.linear.Queue;
+import material.linear.queue.ArrayQueue;
+import material.linear.queue.LinkedQueue;
+import material.linear.queue.Queue;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Assumptions;
 

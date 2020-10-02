@@ -3,6 +3,7 @@ package material.linear.stack;
 public class LinkedStackFloatNoExcept {
 
     private class Node{ // this.top = nodo; con esto haces que el objeto top apunte a nodo
+
         private float element;
         private Node next;
 

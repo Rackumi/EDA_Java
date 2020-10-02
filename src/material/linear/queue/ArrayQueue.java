@@ -1,4 +1,4 @@
-package material.linear;
+package material.linear.queue;
 
 public class ArrayQueue<E> implements Queue<E> {
 
