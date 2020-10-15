@@ -1,20 +1,25 @@
 package material.linear.queue;
 
 public class LinkedQueue<E> implements Queue<E> {
-    private int size;
-    private Node<E> front;
-    private Node<E> tail;
 
+    /**
+     * Inner class which represents a node of the stack
+     *
+     * @param <T> the type of the elements stored in a node
+     */
     private class Node<T> {
-        private E element;
-        private Node<T> next;
 
+        private E element; //element
+        private Node<T> next; //next node
+
+        /* Constructors */
 
         public Node(E element){
             this.setElement(element);
             setNext(null);
         }
 
+        /* getters and setters */
 
         public E getElement() {
             return element;
@@ -31,12 +36,20 @@ public class LinkedQueue<E> implements Queue<E> {
         public void setNext(Node<T> next) {
             this.next = next;
         }
+
     }
+
+    /* Attributes */
+
+    private int size;
+    private Node<E> head;
+    private Node<E> tail;
+
+    /* Methods */
 
     @Override
     public int size() {
         return size;
-
     }
 
     @Override
@@ -45,36 +58,37 @@ public class LinkedQueue<E> implements Queue<E> {
     }
 
     @Override
-    public E front() {
+    public E front() throws RuntimeException{
         if(isEmpty()){
             throw new RuntimeException("Queue is empty");
         }
-        return this.front.getElement();
+        return this.head.getElement();
     }
 
     @Override
     public void enqueue(E element) {
         Node<E> newNode = new Node<>(element);
         if(isEmpty()){
-            this.front = newNode;
+            this.head = newNode;
         } else {
-            this.tail.setNext(newNode);
+            this.tail.setNext(newNode); //haces que el que está apuntando tail apunte ahora a newNode
         }
-        this.tail = newNode;
+        this.tail = newNode; //tail ahora apunta a newNode tmb
         size++;
     }
 
     @Override
-    public E dequeue() {
+    public E dequeue() throws RuntimeException {
         if(isEmpty()){
             throw new RuntimeException("Queue is empty");
         }
-        E element = this.front();
-        this.front = this.front.getNext();
-        if(this.front == null) {
-            this.tail = null;
+        E element = this.front(); //guarda el elemento
+        this.head = this.head.getNext();
+        if(this.head == null) { //si se head se queda apuntando a la nada es que está vacia
+            this.tail = null; //asique hacemos que tail tmb apunte a la nada
         }
         size--;
         return element;
     }
+
 }

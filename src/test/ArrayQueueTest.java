@@ -8,14 +8,13 @@ import org.junit.jupiter.api.Assumptions;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class QueueTest {
+class ArrayQueueTest {
     Queue<Integer> queue;
     final int MAX=25;
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
-//        queue = new ArrayQueue<>();
-        queue = new LinkedQueue<>();
+        queue = new ArrayQueue<>();
         for (int i = 0; i < MAX; i++) {
             queue.enqueue(i);
         }
