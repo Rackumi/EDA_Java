@@ -11,7 +11,7 @@ import java.util.List;
  * A linked class for a tree where nodes have an arbitrary number of children.
  *
  * @param <E> the type of the elements in the tree
- * @author Raul Cabido, Abraham Duarte, Jose Velez, J. Sanchez-Oro, J. D. Quintana
+ * @author
  */
 public class LinkedTree<E> implements NAryTree<E> {
 
@@ -35,7 +35,7 @@ public class LinkedTree<E> implements NAryTree<E> {
          * @param p the parent of the node
          * @param c the list of children of the node
          */
-        public TreeNode(LinkedTree<T> t, T e, TreeNode<T> p, List<TreeNode<T>> c) {
+        public TreeNode(T e, TreeNode<T> p, List<TreeNode<T>> c, LinkedTree<T> t) {
             this.element = e;
             this.parent = p;
             this.children = c;
@@ -186,9 +186,9 @@ public class LinkedTree<E> implements NAryTree<E> {
         if (!isEmpty()) {
             throw new IllegalStateException("Tree already has a root");
         }
-        size = 1;
-        root = new TreeNode<E>(this, e, null, new ArrayList<>());
-        return root;
+        this.size = 1;
+        this.root = new TreeNode<E>( e, null, new ArrayList<>(),this);
+        return root; //por polimorfismo devuelve un position
     }
 
     public void swapElements(Position<E> p1, Position<E> p2) {
@@ -206,29 +206,28 @@ public class LinkedTree<E> implements NAryTree<E> {
      * @return the position casted to TreeNode
      * @throws IllegalStateException if the position is not valid
      */
-    private TreeNode<E> checkPosition(Position<E> p)
-            throws IllegalStateException {
-        if (p == null || !(p instanceof TreeNode)) {
-            throw new IllegalStateException("The position is invalid");
+    private TreeNode<E> checkPosition(Position<E> p) throws RuntimeException  { //O(1)
+        if (!(p instanceof TreeNode)) { //tmb se encarga de ver si p es nulo o no
+            throw new RuntimeException("The position is invalid");
         }
         TreeNode<E> aux = (TreeNode<E>) p;
 
         if (aux.getMyTree() != this) {
-            throw new IllegalStateException("The node is not from this tree");
+            throw new RuntimeException("The node is not from this tree");
         }
         return aux;
     }
 
-    public Position<E> add(E element, Position<E> p) {
+    public Position<E> add(E element, Position<E> p) throws RuntimeException {
         TreeNode<E> parent = checkPosition(p);
-        TreeNode<E> newNode = new TreeNode<E>(this, element, parent, new ArrayList<>());
+        TreeNode<E> newNode = new TreeNode<E>(element, parent, new ArrayList<>(),this);
         List<TreeNode<E>> l = parent.getChildren();
         l.add(newNode);
         size++;
         return newNode;
     }
 
-    public void remove(Position<E> p) {
+    public void remove(Position<E> p) throws RuntimeException {
         TreeNode<E> node = checkPosition(p);
         if (node.getParent() != null) {
             Iterator<Position<E>> it = new BFSIterator<E>(this, p);
@@ -260,4 +259,3 @@ public class LinkedTree<E> implements NAryTree<E> {
     }
 
 }
-

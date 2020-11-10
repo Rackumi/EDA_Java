@@ -11,7 +11,7 @@ import java.util.Queue;
  * Generic iterator for trees
  *
  * @param <E> the type of elements stored in the tree
- * @author A. Duarte, J. Vélez, J. Sánchez-Oro
+ * @author
  */
 public class BFSIterator<E> implements Iterator<Position<E>> {
 
@@ -43,6 +43,11 @@ public class BFSIterator<E> implements Iterator<Position<E>> {
             nodeQueue.add(node);
         }
         return aux;
+    }
+
+    @Override
+    public void remove() {
+        throw new UnsupportedOperationException("Not implemented.");
     }
 
 }

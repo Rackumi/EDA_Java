@@ -1,4 +1,4 @@
-package test;
+package test.listTest;
 
 import material.Position;
 import material.linear.list.DoubleLinkedList;

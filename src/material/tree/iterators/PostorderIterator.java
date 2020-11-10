@@ -3,7 +3,6 @@ package material.tree.iterators;
 import material.Position;
 import material.tree.Tree;
 
-import java.util.ArrayDeque;
 import java.util.Iterator;
 import java.util.function.Predicate;
 
@@ -13,19 +12,19 @@ import java.util.function.Predicate;
  * @param <E>
  * @author
  */
-public class PreorderIterator<E> implements Iterator<Position<E>> {
+public class PostorderIterator<E> implements Iterator<Position<E>> {
 
     //TODO: Implementar (alumnos)
 
-    public PreorderIterator(Tree<E> tree) {
+    public PostorderIterator(Tree<E> tree) {
         throw new RuntimeException("Not yet implemented");
     }
 
-    public PreorderIterator(Tree<E> tree, Position<E> start) {
+    public PostorderIterator(Tree<E> tree, Position<E> start) {
         throw new RuntimeException("Not yet implemented");
     }
 
-    public PreorderIterator(Tree<E> tree, Position<E> start, Predicate<Position<E>> predicate) {
+    public PostorderIterator(Tree<E> tree, Position<E> start, Predicate<Position<E>> predicate) {
         throw new RuntimeException("Not yet implemented");
     }
 
@@ -40,11 +39,8 @@ public class PreorderIterator<E> implements Iterator<Position<E>> {
         throw new RuntimeException("Not yet implemented");
     }
 
-    private void lookForward() {
-        throw new RuntimeException("Not yet implemented");
-    }
-
-    private void pushChildrenInReverseOrder(Tree<E> tree, Position<E> pop) {
+    @Override
+    public void remove(){
         throw new RuntimeException("Not yet implemented");
     }
 

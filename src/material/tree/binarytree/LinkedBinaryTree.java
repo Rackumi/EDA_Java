@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * @param <E>
- * @author A. Duarte, J. Vélez
+ * @author
  * @see BinaryTree
  */
 public class LinkedBinaryTree<E> implements BinaryTree<E> {
@@ -392,7 +392,9 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 
     @Override
     public void attachLeft(Position<E> p, BinaryTree<E> tree) throws RuntimeException {
+        //TODO: Este metodo depende de que tree sea del mismo tipo que this
         BTNode<E> node = checkPosition(p);
+
         if (tree == this) {
             throw new RuntimeException("Cannot attach a tree over himself");
         }
@@ -415,7 +417,9 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 
     @Override
     public void attachRight(Position<E> p, BinaryTree<E> tree) throws RuntimeException {
+        //TODO: Este metodo depende de que tree sea del mismo tipo que this
         BTNode<E> node = checkPosition(p);
+
         if (tree == this) {
             throw new RuntimeException("Cannot attach a tree over himself");
         }
@@ -436,9 +440,12 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
     }
 
     @Override
-    public boolean isComplete() {
-        //TODO: Practica 3 Ejercicio 1
-        throw new RuntimeException("Not yet implemented");
+    public boolean isComplete(){
+        for (Position<E> next : this) {
+        if (this.isInternal(next) && (!this.hasLeft(next) || !this.hasRight(next)))
+            return false;
+    }
+        return true;
     }
 
     // Auxiliary methods

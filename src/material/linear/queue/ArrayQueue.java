@@ -22,6 +22,8 @@ public class ArrayQueue<E> implements Queue<E> {
         q = (E[]) new Object[this.capacity];
     }
 
+    /* Methods */
+
     @Override
     public int size() {
         return this.tail;
@@ -62,4 +64,5 @@ public class ArrayQueue<E> implements Queue<E> {
         this.tail--;
         return elem;
     }
+
 }

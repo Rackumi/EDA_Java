@@ -1,11 +1,11 @@
 package material;
 
 /**
- * An interface for a position, which is a holder object storing a single
- * element.
+ * Interface for position, which is a holder object storing a single
+ * element(XNode).
  *
  * @param <E> the type of the element stored in the position
- * @author A. Duarte, J. Vélez, J. Sánchez-Oro
+ * @author Rackumi
  */
 public interface Position<E> {
 

@@ -11,7 +11,7 @@ import java.util.LinkedList;
  * Inorder iteartor for binary trees.
  *
  * @param <T>
- * @author jvelez, JD. Quintana
+ * @author
  */
 public class InorderBinaryTreeIterator<T> implements Iterator<Position<T>> {
 
@@ -23,7 +23,6 @@ public class InorderBinaryTreeIterator<T> implements Iterator<Position<T>> {
         if (!tree.isEmpty())
             goToLastInLeft(tree.root());
     }
-
 
     public InorderBinaryTreeIterator(BinaryTree<T> tree, Position<T> node) {
         this.tree = tree;
@@ -60,4 +59,5 @@ public class InorderBinaryTreeIterator<T> implements Iterator<Position<T>> {
     public void remove() {
         throw new UnsupportedOperationException("Not implemented.");
     }
+
 }

@@ -1,4 +1,4 @@
-package test;
+package test.queueTest;
 
 import material.linear.queue.ArrayQueue;
 import material.linear.queue.LinkedQueue;

@@ -14,16 +14,16 @@ class LinkedTreeTest {
     void setUp() {
         tree = new LinkedTree<>();
         pos = new Position[12];
-        pos[0]  = tree.addRoot(0);
-        pos[1]  = tree.add(1,  pos[0]);
-        pos[2]  = tree.add(2,  pos[0]);
-        pos[3]  = tree.add(3,  pos[0]);
-        pos[4]  = tree.add(4,  pos[0]);
-        pos[5]  = tree.add(5,  pos[1]);
-        pos[6]  = tree.add(6,  pos[2]);
-        pos[7]  = tree.add(7,  pos[2]);
-        pos[8]  = tree.add(8,  pos[3]);
-        pos[9]  = tree.add(9,  pos[7]);
+        pos[0] = tree.addRoot(0);
+        pos[1] = tree.add(1, pos[0]);
+        pos[2] = tree.add(2, pos[0]);
+        pos[3] = tree.add(3, pos[0]);
+        pos[4] = tree.add(4, pos[0]);
+        pos[5] = tree.add(5, pos[1]);
+        pos[6] = tree.add(6, pos[2]);
+        pos[7] = tree.add(7, pos[2]);
+        pos[8] = tree.add(8, pos[3]);
+        pos[9] = tree.add(9, pos[7]);
         pos[10] = tree.add(10, pos[7]);
         pos[11] = tree.add(11, pos[7]);
     }
@@ -239,6 +239,5 @@ class LinkedTreeTest {
                 () -> tree.moveSubtree(pos[4], pos[4]));
         assertEquals("Both positions are the same", thrown.getMessage());
     }
-
 
 }

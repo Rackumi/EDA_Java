@@ -5,12 +5,12 @@ public class LinkedQueue<E> implements Queue<E> {
     /**
      * Inner class which represents a node of the stack
      *
-     * @param <T> the type of the elements stored in a node
+     * @param <E> the type of the elements stored in a node
      */
-    private class Node<T> {
+    private class Node<E> {
 
         private E element; //element
-        private Node<T> next; //next node
+        private Node<E> next; //next node
 
         /* Constructors */
 
@@ -29,11 +29,11 @@ public class LinkedQueue<E> implements Queue<E> {
             this.element = element;
         }
 
-        public Node<T> getNext() {
+        public Node<E> getNext() {
             return next;
         }
 
-        public void setNext(Node<T> next) {
+        public void setNext(Node<E> next) {
             this.next = next;
         }
 
