@@ -24,19 +24,19 @@ public interface Map<K, V> extends Iterable<Entry<K, V>> {
      * entry with the specified value and returns the old value. Else, adds a
      * new entry with the specified key and value and returns null.
      */
-    V put(K key, V value) throws IllegalStateException;
+    V put(K key, V value) throws RuntimeException;
 
     /**
      * Returns the value of the entry containing the given key. Returns null if
      * no such entry exists.
      */
-    V get(K key) throws IllegalStateException;
+    V get(K key) throws RuntimeException;
 
     /**
      * If there is an entry with the specified key, removes this entry and
      * returns its value. Else, returns null.
      */
-    V remove(K key) throws IllegalStateException;
+    V remove(K key) throws RuntimeException;
 
     /**
      * Returns an iterable object containing all the keys in the map.

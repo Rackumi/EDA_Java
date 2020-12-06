@@ -8,7 +8,7 @@ import material.Position;
  * @author Rackumi
  * @param <E> The generic type of the list
  */
-public interface List<E> {
+public interface List<E> extends Iterable<Position<E>>{
 
     /**
      * Checks the number of elements in this list.
@@ -25,20 +25,21 @@ public interface List<E> {
     boolean isEmpty();
 
     /**
-     * Accesses to the first node in the list.
+     * Accesses to the first node in the list. O(1) time
      *
      * @return the first node in the list
      */
     Position<E> first();
 
     /**
-     * Accesses to the last node in the list.
+     * Accesses to the last node in the list. O(1) time
+     *
      * @return the last node in the list
      */
     Position<E> last();
 
     /**
-     * Accesses the position after the given one; O(1) time
+     * Accesses the position after the given one. O(1) time
      *
      * @param p the position used as reference to access its next one
      * @return the next position with respect to p
@@ -98,8 +99,7 @@ public interface List<E> {
     E remove(Position<E> p) throws RuntimeException;
 
     /**
-     * Replaces the element at the given position with the new element; O(1)
-     * time
+     * Replaces the element at the given position with the new element; O(1) time
      *
      * @param p the position to be modified
      * @param e the new element to be set in p

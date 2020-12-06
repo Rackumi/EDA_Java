@@ -1,19 +1,23 @@
 package test.queueTest;
 
 import material.linear.queue.ArrayQueue;
-import material.linear.queue.LinkedQueue;
 import material.linear.queue.Queue;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Assumptions;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ArrayQueueTest {
+/**
+ * Test for class ArrayQueue
+ *
+ * @author Rackumi
+ */
+class ArrayQueueTest{
     Queue<Integer> queue;
     final int MAX=25;
 
     @org.junit.jupiter.api.BeforeEach
-    void setUp() {
+    void setUp(){
         queue = new ArrayQueue<>();
         for (int i = 0; i < MAX; i++) {
             queue.enqueue(i);
@@ -21,29 +25,29 @@ class ArrayQueueTest {
     }
 
     @org.junit.jupiter.api.AfterEach
-    void tearDown() {
+    void tearDown(){
         queue = null;
     }
 
     @org.junit.jupiter.api.Test
-    void testSize() {
+    void testSize(){
         assertEquals(queue.size(), MAX);
     }
 
     @org.junit.jupiter.api.Test
-    void testIsEmpty() {
+    void testIsEmpty(){
         assertFalse(queue.isEmpty());
     }
 
     @org.junit.jupiter.api.Test
-    void testFront() {
+    void testFront(){
         assertEquals((int) queue.front(), 0);
     }
 
     @org.junit.jupiter.api.Test
-    void testEnqueue() {
+    void testEnqueue(){
         int size = queue.size();
-        for (int i=1;i<=10;i++) {
+        for(int i=1; i<=10; i++){
             queue.enqueue(i);
             size++;
             assertEquals(size, queue.size());
@@ -51,7 +55,7 @@ class ArrayQueueTest {
     }
 
     @org.junit.jupiter.api.Test
-    void testDequeue() {
+    void testDequeue(){
         int actual = 0;
         while(!queue.isEmpty()){
             int element = queue.dequeue();
@@ -61,18 +65,17 @@ class ArrayQueueTest {
         assertTrue(queue.isEmpty());
         RuntimeException runtimeException = Assertions.assertThrows(RuntimeException.class, () -> queue.dequeue());
         assertEquals("Queue is empty", runtimeException.getMessage());
-
     }
 
     @org.junit.jupiter.api.Test
-    void testResize() {
+    void testResize(){
         //assumeTrue reports if the condition is not met and the test is stopped, a stacktrace is reported,
         //and the test marked as ignored.
         Assumptions.assumeTrue(queue instanceof ArrayQueue, "Not an instance of ArrayQueue");
 
         //assumingThat if a test tha only executes in certain conditions
         //if the condition is not met the test will pass.
-        Assumptions.assumingThat(queue instanceof ArrayQueue,
+        Assumptions.assumingThat(true,
                 ()->{
                     int start = 100;
                     int maxElements = 500;
@@ -96,8 +99,7 @@ class ArrayQueueTest {
                     }
                     RuntimeException runtimeException = Assertions.assertThrows(RuntimeException.class, () -> queue.dequeue());
                     assertEquals("Queue is empty", runtimeException.getMessage());
-
                 });
-
     }
+
 }

@@ -5,8 +5,7 @@ package material.linear.stack;
  *
  * @author Rackumi
  * @param <E> The generic type of the list
- **/
-
+ */
 public interface Stack<E> {
 
     /**
@@ -38,7 +37,7 @@ public interface Stack<E> {
     void push(E element);
 
     /**
-     * Removes the element at the front of the queue.
+     * Removes and returns the element at the front of the queue.
      *
      * @return the element removed.
      */

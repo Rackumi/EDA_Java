@@ -1,67 +1,116 @@
 package material.linear.list;
 
 import material.Position;
+import java.util.Iterator;
 
 /**
  * DoubleLinkedList with Position (list of nodes).
+ *
  * @author Rackumi
  */
-
 public class DoubleLinkedList<E> implements List<E> {
 
-    /**
-     * Node implemented with position
-     * @param <E>
-     */
-    private class DNode<E> implements Position<E> {
+    /* Inner classes */
+
+    private class DNode<E> implements Position<E>{
 
         /* Attributes */
 
         private E elem;
         private DNode<E> prev, next;
-        private DoubleLinkedList<E> myList;
+        private DoubleLinkedList<E> myList; // referencia a la lista que pertenece cada nodo
 
         /* Constructors */
 
-        public DNode(E e, DNode<E> p, DNode<E> n, DoubleLinkedList<E> l) {
+        public DNode(E e, DNode<E> p, DNode<E> n, DoubleLinkedList<E> l){
             this.elem = e;
             this.prev = p;
             this.next = n;
             this.myList = l;
         }
 
-        /* Methods */
+        /* Getters and Setters */
 
-        public E getElement() {
+        public E getElement(){
             return this.elem;
         }
 
-        public void setElement(E elem) {
+        public void setElement(E elem){
             this.elem = elem;
         }
 
-        public DNode<E> getPrev() {
+        public DNode<E> getPrev(){
             return prev;
         }
 
-        public void setPrev(DNode<E> prev) {
+        public void setPrev(DNode<E> prev){
             this.prev = prev;
         }
 
-        public DNode<E> getNext() {
+        public DNode<E> getNext(){
             return next;
         }
 
-        public void setNext(DNode<E> next) {
+        public void setNext(DNode<E> next){
             this.next = next;
         }
 
-        public DoubleLinkedList<E> getMyList() {
+        public DoubleLinkedList<E> getMyList(){
             return myList;
         }
 
-        public void setMyList(DoubleLinkedList<E> myList) {
+        public void setMyList(DoubleLinkedList<E> myList){
             this.myList = myList;
+        }
+
+    }
+
+    private static class LinkedListIterator<E> implements Iterator<E> {
+
+        /*
+        A simple iterator class for lists. The elements of a list are returned by
+        this iterator. No copy of the list is made, so any changes to the list
+        are reflected in the iterator.
+        */
+
+        private final List<E> list; // the underlying list
+        private Position<E> cursor; // the next position
+
+
+        public LinkedListIterator(List<E> l) {
+            list = l;
+            //cursor = (list.isEmpty()) ? null : list.first();
+            if ((list.isEmpty()))
+            cursor = null;
+            else
+            cursor = list.first();
+        }
+
+
+        @Override
+        public boolean hasNext() {
+            return (cursor != null);
+        }
+
+
+        @Override
+        public E next() throws RuntimeException {
+            if (cursor == null) {
+                throw new RuntimeException("No next element");
+            }
+            E toReturn = cursor.getElement();
+            //cursor = (cursor == list.last()) ? null : list.next(cursor);
+            if (cursor == list.last())
+                cursor = null;
+            else
+                cursor = list.next(cursor);
+
+            return toReturn;
+        }
+
+        @Override
+        public void remove() throws UnsupportedOperationException {
+            throw new UnsupportedOperationException("remove is not implemented");
         }
     }
 
@@ -294,6 +343,12 @@ public class DoubleLinkedList<E> implements List<E> {
         E temp = pA.getElement();
         pA.setElement(pB.getElement());
         pB.setElement(temp);
+    }
+
+    @Override
+    public Iterator<Position<E>> iterator(){
+        return null;
+//        return new LinkedListIterator<E>(this);
     }
 
 }

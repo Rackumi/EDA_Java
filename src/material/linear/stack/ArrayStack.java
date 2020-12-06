@@ -4,7 +4,7 @@ public class ArrayStack<E> implements Stack<E>{
 
     /* Attributes */
 
-    private int top; //el head siempre seria la posicion 0
+    private int top; // posicion de la cabeza de la pila
     private int capacity;
     private E[] s;
 
@@ -25,17 +25,17 @@ public class ArrayStack<E> implements Stack<E>{
     /* Methods */
 
     @Override
-    public int size() {
+    public int size(){
         return this.top;
     }
 
     @Override
-    public boolean isEmpty() {
+    public boolean isEmpty(){
         return this.top == 0;
     }
 
     @Override
-    public E top() throws RuntimeException {
+    public E top() throws RuntimeException{
         if (isEmpty()){
             throw new RuntimeException("The stack is empty");
         }
@@ -43,7 +43,7 @@ public class ArrayStack<E> implements Stack<E>{
     }
 
     @Override
-    public void push(E element) {
+    public void push(E element){
         if(this.top == capacity/2){
             capacity *= 2;
             E[] s2 = (E[]) new Object[this.capacity];
@@ -55,7 +55,7 @@ public class ArrayStack<E> implements Stack<E>{
     }
 
     @Override
-    public E pop() {
+    public E pop() throws RuntimeException{
         if (isEmpty()){
             throw new RuntimeException("The stack is empty");
         }

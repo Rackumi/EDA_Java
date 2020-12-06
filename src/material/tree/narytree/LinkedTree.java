@@ -5,13 +5,14 @@ import material.tree.iterators.BFSIterator;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
  * A linked class for a tree where nodes have an arbitrary number of children.
  *
  * @param <E> the type of the elements in the tree
- * @author
+ * @author Rackumi
  */
 public class LinkedTree<E> implements NAryTree<E> {
 
@@ -173,7 +174,6 @@ public class LinkedTree<E> implements NAryTree<E> {
         return node.getChildren();
     }
 
-
     public E replace(Position<E> p, E e) {
         TreeNode<E> node = checkPosition(p);
         E temp = p.getElement();
@@ -199,6 +199,69 @@ public class LinkedTree<E> implements NAryTree<E> {
         node1.setElement(temp);
     }
 
+    public Position<E> add(E element, Position<E> p) throws RuntimeException {
+        TreeNode<E> parent = checkPosition(p);
+        TreeNode<E> newNode = new TreeNode<E>(element, parent, new ArrayList<>(),this);
+        List<TreeNode<E>> l = parent.getChildren();
+        l.add(newNode);
+        size++;
+        return newNode;
+    }
+
+    public void remove(Position<E> p) throws RuntimeException {
+        TreeNode<E> node = checkPosition(p);
+
+        Iterator<Position<E>> it = new BFSIterator<E>(this, p);
+        int cont = 0;
+        while (it.hasNext()) {
+            TreeNode<E> next = checkPosition(it.next());
+            next.setMyTree(null);
+            cont++;
+        }
+        this.size = this.size - cont;
+        if (node.getParent() != null) {
+            TreeNode<E> parent = node.getParent();
+            parent.getChildren().remove(node);
+        }
+        else{
+            this.root = null;
+        }
+
+        node.setMyTree(null);
+    }
+
+    @Override
+    public Iterator<Position<E>> iterator() {
+        return new BFSIterator<>(this);
+    }
+
+    @Override
+    public void moveSubtree(Position<E> pOrig, Position<E> pDest) throws RuntimeException {
+        if (pOrig.equals(pDest)){
+            throw new RuntimeException("Both positions are the same");
+        }
+
+        TreeNode<E> nodeO = checkPosition(pOrig);
+        if (isRoot(nodeO)){
+            throw new RuntimeException("Root node can't be moved");
+        }
+
+        TreeNode<E> nodeD = checkPosition(pDest);
+        Iterator<Position<E>> it = new BFSIterator<>(this, pOrig);
+        while (it.hasNext()){
+            Position<E> a = it.next();
+            if(a==nodeD){
+                throw new RuntimeException("Target position can't be a sub tree of origin");
+            }
+        }
+
+        List<TreeNode<E>> hijosPO = nodeO.getParent().getChildren();
+        hijosPO.remove(nodeO);
+        nodeO.setParent(nodeD);
+        List<TreeNode<E>> hijosD = nodeD.getChildren();
+        hijosD.add(nodeO);
+    }
+
     /**
      * Validates the given position, casting it to TreeNode if valid
      *
@@ -218,44 +281,26 @@ public class LinkedTree<E> implements NAryTree<E> {
         return aux;
     }
 
-    public Position<E> add(E element, Position<E> p) throws RuntimeException {
-        TreeNode<E> parent = checkPosition(p);
-        TreeNode<E> newNode = new TreeNode<E>(element, parent, new ArrayList<>(),this);
-        List<TreeNode<E>> l = parent.getChildren();
-        l.add(newNode);
-        size++;
-        return newNode;
-    }
-
-    public void remove(Position<E> p) throws RuntimeException {
-        TreeNode<E> node = checkPosition(p);
-        if (node.getParent() != null) {
-            Iterator<Position<E>> it = new BFSIterator<E>(this, p);
-            int cont = 0;
-            while (it.hasNext()) {
-                TreeNode<E> next = checkPosition(it.next());
-                next.setMyTree(null);
-                cont++;
-            }
-            size = size - cont;
-            TreeNode<E> parent = node.getParent();
-            parent.getChildren().remove(node);
-        } else {
-            this.root = null;
-            this.size = 0;
+    private void posOrderAux(Position<E> p, List<Position<E>> pos) throws RuntimeException {
+        for(Position<E> w : children(p)){
+            posOrderAux(w, pos);
         }
-        node.setMyTree(null);
+        pos.add(p);
     }
 
-    @Override
-    public Iterator<Position<E>> iterator() {
-        return new BFSIterator<>(this);
+    public Iterable<Position<E>> posOrder(){
+        List<Position<E>> positions = new ArrayList<Position<E>>();
+        if(this.size != 0){
+            posOrderAux(this.root, positions);
+        }
+        return positions;
     }
 
-    @Override
-    public void moveSubtree(Position<E> pOrig, Position<E> pDest) throws RuntimeException {
-        //TODO: Practica 2 Ejercicio 1
-        throw new RuntimeException("Not implemented");
+    private void preOrderAux(Position<E> p, List<Position<E>> pos) throws RuntimeException {
+        pos.add(p);
+        for(Position<E> w : children(p)){
+            posOrderAux(w, pos);
+        }
     }
 
 }

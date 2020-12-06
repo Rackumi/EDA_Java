@@ -2,12 +2,11 @@ package material.linear.queue;
 
 public class LinkedQueue<E> implements Queue<E> {
 
-    /**
-     * Inner class which represents a node of the stack
-     *
-     * @param <E> the type of the elements stored in a node
-     */
-    private class Node<E> {
+    /* Inner classes */
+
+    private class Node<E>{
+
+        /* Attributes */
 
         private E element; //element
         private Node<E> next; //next node
@@ -19,21 +18,21 @@ public class LinkedQueue<E> implements Queue<E> {
             setNext(null);
         }
 
-        /* getters and setters */
+        /* Getters and Setters */
 
-        public E getElement() {
+        public E getElement(){
             return element;
         }
 
-        public void setElement(E element) {
+        public void setElement(E element){
             this.element = element;
         }
 
-        public Node<E> getNext() {
+        public Node<E> getNext(){
             return next;
         }
 
-        public void setNext(Node<E> next) {
+        public void setNext(Node<E> next){
             this.next = next;
         }
 
@@ -48,12 +47,12 @@ public class LinkedQueue<E> implements Queue<E> {
     /* Methods */
 
     @Override
-    public int size() {
+    public int size(){
         return size;
     }
 
     @Override
-    public boolean isEmpty() {
+    public boolean isEmpty(){
         return size==0;
     }
 
@@ -66,7 +65,7 @@ public class LinkedQueue<E> implements Queue<E> {
     }
 
     @Override
-    public void enqueue(E element) {
+    public void enqueue(E element){
         Node<E> newNode = new Node<>(element);
         if(isEmpty()){
             this.head = newNode;
@@ -78,7 +77,7 @@ public class LinkedQueue<E> implements Queue<E> {
     }
 
     @Override
-    public E dequeue() throws RuntimeException {
+    public E dequeue() throws RuntimeException{
         if(isEmpty()){
             throw new RuntimeException("Queue is empty");
         }

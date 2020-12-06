@@ -2,29 +2,37 @@ package material.linear.stack;
 
 public class LinkedStack<E> implements Stack<E> {
 
-    private class Node<T> {
+    /* Inner classes */
+
+    private class Node<E>{
+
+        /* Attributes */
 
         private E element;
-        private Node<T> next;
+        private Node<E> next;
+
+        /* Constructors */
 
         public Node(E element){
             this.setElement(element);
             setNext(null);
         }
 
-        public E getElement() {
+        /* Getters and Setters */
+
+        public E getElement(){
             return element;
         }
 
-        public void setElement(E element) {
+        public void setElement(E element){
             this.element = element;
         }
 
-        public Node<T> getNext() {
+        public Node<E> getNext(){
             return next;
         }
 
-        public void setNext(Node<T> next) {
+        public void setNext(Node<E> next){
             this.next = next;
         }
 
@@ -38,17 +46,17 @@ public class LinkedStack<E> implements Stack<E> {
     /* Methods */
 
     @Override
-    public int size() {
+    public int size(){
         return this.size;
     }
 
     @Override
-    public boolean isEmpty() {
+    public boolean isEmpty(){
         return (size==0);
     }
 
     @Override
-    public E top() {
+    public E top() throws RuntimeException{
         if(!isEmpty()){
             return this.top.getElement();
         }
@@ -56,20 +64,17 @@ public class LinkedStack<E> implements Stack<E> {
     }
 
     @Override
-    public void push(E element) {
+    public void push(E element){
         Node<E> nodo = new Node<>(element);
-        if(isEmpty()){
-            this.top = nodo;
-        }
-        else {
+        if(!isEmpty()){ // si no esta vacia hacemos que el nodo apunte al nodo anterior(apuntado por top)
             nodo.setNext(this.top);
-            this.top = nodo;
         }
+        this.top = nodo;
         size++;
     }
 
     @Override
-    public E pop() {
+    public E pop() throws RuntimeException{
         if(!isEmpty()){
             size--;
             E element = this.top.getElement();

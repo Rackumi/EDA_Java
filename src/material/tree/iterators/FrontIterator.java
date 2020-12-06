@@ -36,6 +36,6 @@ public class FrontIterator<T> implements Iterator<Position<T>> {
 
     @Override
     public void remove() {
-        throw new RuntimeException("Not yet implemented");
+        throw new UnsupportedOperationException("Not implemented.");
     }
 }

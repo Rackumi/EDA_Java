@@ -5,8 +5,7 @@ package material.linear.queue;
  *
  * @author Rackumi
  * @param <E> The generic type of the list
- **/
-
+ */
 public interface Queue<E> {
 
     /**

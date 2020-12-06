@@ -1,25 +1,25 @@
 package material.linear.stack;
 
-public class ArrayStackFloatNoExcept {
+public class ArrayStackFloatNoExcept{
 
-    /* Variables */
+    /* Attributes */
 
     private float[] s;
     private int top; //marca la primera posicion vacia del array
-    private int MAX_SIZE;
+    private final int MAX_SIZE;
 
-    /* Constructores */
+    /* Constructors */
 
     public ArrayStackFloatNoExcept(int cap){
         this.MAX_SIZE = cap;
-        this.top = 0; //no haria falta xq top ya se inicializa a 0 (Java siempre inicializa a estados conocidos)
+        this.top = 0; // no haria falta xq top ya se inicializa a 0 (Java siempre inicializa a estados conocidos)
         this.s = new float[cap];
     }
 
-    /* Funciones */
+    /* Methods */
 
     public int size(){ // O(1)
-        return this.top; //devolveria top y no top-1 xq cuenta la posicion 0
+        return this.top; // devolveria top y no top-1 xq cuenta la posicion 0
     }
 
     public boolean isEmpty(){ // O(1)

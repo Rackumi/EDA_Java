@@ -17,55 +17,53 @@ import java.util.Random;
  *
  * @param <K> Key type
  * @param <V> Value type
- * @author R. Cabido, A. Duarte, and J. Velez
+ * @author
  */
 abstract public class AbstractHashTableMap<K, V> implements Map<K, V> {
 
     /**
-     * @param <T> Key type
-     * @param <U> Value type
+     * @param <K> Key type
+     * @param <V> Value type
      */
-    private class HashEntry<T, U> implements Entry<T, U> {
+    private class HashEntry<K, V> implements Entry<K, V> {
 
-        protected T key;
-        protected U value;
+        protected K key;
+        protected V value;
+        protected AbstractHashTableMap<K, V> myTable;
 
-        public HashEntry(T k, U v) {
+        public HashEntry(K k, V v) {
             key = k;
             value = v;
         }
 
         @Override
-        public U getValue() {
+        public V getValue() {
             return value;
         }
 
         @Override
-        public T getKey() {
+        public K getKey() {
             return key;
         }
 
-        public U setValue(U val) {
-            U oldValue = value;
+        public V setValue(V val) {
+            V oldValue = value;
             value = val;
             return oldValue;
         }
 
         @Override
         public boolean equals(Object o) {
-
             if (o.getClass() != this.getClass()) {
                 return false;
             }
-
-            HashEntry<T, U> ent;
+            HashEntry<K, V> ent;
             try {
-                ent = (HashEntry<T, U>) o;
+                ent = (HashEntry<K, V>) o;
             } catch (ClassCastException ex) {
                 return false;
             }
-            return (ent.getKey().equals(this.key))
-                    && (ent.getValue().equals(this.value));
+            return (ent.getKey().equals(this.key)) && (ent.getValue().equals(this.value));
         }
 
         /**
@@ -77,9 +75,6 @@ abstract public class AbstractHashTableMap<K, V> implements Map<K, V> {
         }
     }
 
-    /**
-     * @author Juan David Quintana Perez, Daniel Arroyo Cortes
-     */
     private class HashTableMapIterator<T, U> implements Iterator<Entry<T, U>> {
 
         private int pos;

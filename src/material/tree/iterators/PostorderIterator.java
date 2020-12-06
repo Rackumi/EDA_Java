@@ -40,8 +40,8 @@ public class PostorderIterator<E> implements Iterator<Position<E>> {
     }
 
     @Override
-    public void remove(){
-        throw new RuntimeException("Not yet implemented");
+    public void remove() {
+        throw new UnsupportedOperationException("Not implemented.");
     }
 
 }

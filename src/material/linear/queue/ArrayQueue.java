@@ -4,7 +4,7 @@ public class ArrayQueue<E> implements Queue<E> {
 
     /* Attributes */
 
-    private int tail; //el head siempre seria la posicion 0
+    private int tail;
     private int capacity;
     private E[] q;
 
@@ -25,12 +25,12 @@ public class ArrayQueue<E> implements Queue<E> {
     /* Methods */
 
     @Override
-    public int size() {
+    public int size(){
         return this.tail;
     }
 
     @Override
-    public boolean isEmpty() {
+    public boolean isEmpty(){
         return (size()==0);
     }
 
@@ -55,7 +55,7 @@ public class ArrayQueue<E> implements Queue<E> {
     }
 
     @Override
-    public E dequeue() throws RuntimeException {
+    public E dequeue() throws RuntimeException{
         if(isEmpty()) {
             throw new RuntimeException("Queue is empty");
         }

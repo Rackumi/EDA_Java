@@ -9,12 +9,11 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * @param <E>
- * @author
+ * @param <E> 
+ * @author Rackumi
  * @see BinaryTree
  */
 public class LinkedBinaryTree<E> implements BinaryTree<E> {
-
 
     protected class BTNode<T> implements Position<T> {
 
@@ -128,12 +127,10 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
         return size;
     }
 
-
     @Override
     public boolean isEmpty() {
         return (root == null);
     }
-
 
     @Override
     public boolean isInternal(Position<E> v) {
@@ -141,12 +138,10 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
         return (hasLeft(v) || hasRight(v));
     }
 
-
     @Override
     public boolean isLeaf(Position<E> p) {
         return !isInternal(p);
     }
-
 
     @Override
     public boolean isRoot(Position<E> p) {
@@ -154,20 +149,17 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
         return (p == root());
     }
 
-
     @Override
     public boolean hasLeft(Position<E> p) {
         BTNode<E> node = checkPosition(p);
         return (node.getLeft() != null);
     }
 
-
     @Override
     public boolean hasRight(Position<E> p) {
         BTNode<E> node = checkPosition(p);
         return (node.getRight() != null);
     }
-
 
     @Override
     public Position<E> root() throws RuntimeException {
@@ -187,7 +179,6 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
         return leftPos;
     }
 
-
     @Override
     public Position<E> right(Position<E> p) throws RuntimeException {
         BTNode<E> node = checkPosition(p);
@@ -198,7 +189,6 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
         return rightPos;
     }
 
-
     @Override
     public Position<E> parent(Position<E> p) throws RuntimeException {
         BTNode<E> node = checkPosition(p);
@@ -208,7 +198,6 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
         }
         return parentPos;
     }
-
 
     @Override
     public Iterable<? extends Position<E>> children(Position<E> p) {
@@ -226,7 +215,6 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
     public Iterator<Position<E>> iterator() {
         return new InorderBinaryTreeIterator<>(this);
     }
-
 
     @Override
     public E replace(Position<E> p, E e) {
@@ -288,7 +276,6 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
         return newNode;
     }
 
-
     @Override
     public E remove(Position<E> p) throws RuntimeException {
         BTNode<E> node = checkPosition(p);
@@ -318,7 +305,6 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
         }
         return p.getElement();
     }
-
 
     @Override
     public void swap(Position<E> p1, Position<E> p2) {
@@ -368,7 +354,6 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
             node2.right.parent = node2;
         }
     }
-
 
     @Override
     public BinaryTree<E> subTree(Position<E> v) {
@@ -454,7 +439,7 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
      * If v is a good binary tree node, cast to BTPosition, else throw exception
      */
     private BTNode<E> checkPosition(Position<E> p) {
-        if (p == null || !(p instanceof BTNode)) {
+        if (!(p instanceof BTNode)) {
             throw new RuntimeException("The position is invalid");
         }
         return (BTNode<E>) p;

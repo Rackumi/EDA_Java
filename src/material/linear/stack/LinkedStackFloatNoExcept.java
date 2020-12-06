@@ -1,16 +1,24 @@
 package material.linear.stack;
 
-public class LinkedStackFloatNoExcept {
+public class LinkedStackFloatNoExcept{
+
+    /* Classes */
 
     private class Node{ // this.top = nodo; con esto haces que el objeto top apunte a nodo
 
+        /* Attributes */
+
         private float element;
         private Node next;
+
+        /* Constructors */
 
         public Node(float e, Node n){
             this.element = e;
             this.next = n;
         }
+
+        /* Getters and Setters */
 
         public float getElement(){
             return this.element;
@@ -22,19 +30,19 @@ public class LinkedStackFloatNoExcept {
 
     }
 
-    /* Variables */
+    /* Attributes */
 
     private Node top;
     private int size;
 
-    /* Constructores */
+    /* Constructors */
 
     public LinkedStackFloatNoExcept(){
         this.top = null;
         this.size = 0;
     }
 
-    /* Funciones */
+    /* Methods */
 
     public int size(){ // O(1)
         return this.size;
