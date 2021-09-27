@@ -10,34 +10,80 @@ package structures.linear.list;/*
  */
 public class FloatLinkedList implements FloatList{
 
-    public class FloatNode {
+    private class FloatNode {
 
+        private FloatNode next;
+        private Float element;
+
+        public FloatNode(float element){
+            this.element = element;
+            this.next = null;
+        }
+
+        public FloatNode getNext() {
+            return next;
+        }
+
+        public void setNext(FloatNode next) {
+            this.next = next;
+        }
+
+        public Float getElement() {
+            return element;
+        }
+
+        public void setElement(Float element) {
+            this.element = element;
+        }
     }
 
+    private FloatNode head;
+    private int size;
 
     @Override
     public int size() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.size;
     }
 
     @Override
     public boolean isempty() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.size==0;
     }
 
     @Override
     public void add(Float value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        FloatNode node = new FloatNode(value);
+        if(isempty()){
+            head = node;
+        }
+        else{
+            node.setNext(head.getNext());
+            head.setNext(node);
+        }
     }
 
     @Override
     public void add(int index, Float value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        FloatNode node = new FloatNode(value);
+        if(isempty()){
+            head.setNext(node);
+        }
+        else{
+            node.setNext(head.getNext());
+            head.setNext(node);
+        }
     }
 
     @Override
     public Float remove() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(isempty()){
+            head.setNext(null);
+            return null;
+        }
+        else{
+            head.setNext(head.getNext().getNext());
+            return head.getNext().getElement();
+        }
     }
 
     @Override
