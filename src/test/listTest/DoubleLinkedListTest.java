@@ -1,7 +1,7 @@
 package test.listTest;
 
-import material.Position;
-import material.linear.list.DoubleLinkedList;
+import structures.Position;
+import structures.linear.list.DoubleLinkedList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

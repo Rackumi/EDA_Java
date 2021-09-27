@@ -1,7 +1,7 @@
 package test.queueTest;
 
-import material.linear.queue.ArrayQueue;
-import material.linear.queue.Queue;
+import structures.linear.queue.ArrayQueue;
+import structures.linear.queue.Queue;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Assumptions;
 

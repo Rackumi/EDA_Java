@@ -1,7 +1,7 @@
 package test;
 
-import material.Position;
-import material.tree.narytree.LCRSTree;
+import structures.Position;
+import structures.tree.narytree.LCRSTree;
 
 import static org.junit.jupiter.api.Assertions.*;
 

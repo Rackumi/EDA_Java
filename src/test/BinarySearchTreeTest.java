@@ -1,8 +1,8 @@
 package test;
 
-import material.Position;
-import material.tree.binarysearchtree.BinarySearchTree;
-import material.tree.binarysearchtree.LinkedBinarySearchTree;
+import structures.Position;
+import structures.tree.binarysearchtree.BinarySearchTree;
+import structures.tree.binarysearchtree.LinkedBinarySearchTree;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

@@ -1,8 +1,8 @@
 package test;
 
-import material.maps.Entry;
-import material.maps.HashTableMapLP;
-import material.maps.Map;
+import structures.maps.Entry;
+import structures.maps.HashTableMapLP;
+import structures.maps.Map;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

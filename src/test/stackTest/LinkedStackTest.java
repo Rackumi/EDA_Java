@@ -1,6 +1,6 @@
 package test.stackTest;
 
-import material.linear.stack.LinkedStack;
+import structures.linear.stack.LinkedStack;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

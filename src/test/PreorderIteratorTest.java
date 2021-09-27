@@ -1,8 +1,8 @@
 package test;
 
-import material.Position;
-import material.tree.iterators.PreorderIterator;
-import material.tree.narytree.LinkedTree;
+import structures.Position;
+import structures.tree.iterators.PreorderIterator;
+import structures.tree.narytree.LinkedTree;
 
 import java.util.ArrayList;
 import java.util.Arrays;

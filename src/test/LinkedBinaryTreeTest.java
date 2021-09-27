@@ -1,8 +1,8 @@
 package test;
 
-import material.Position;
-import material.tree.binarytree.BinaryTree;
-import material.tree.binarytree.LinkedBinaryTree;
+import structures.Position;
+import structures.tree.binarytree.BinaryTree;
+import structures.tree.binarytree.LinkedBinaryTree;
 
 import java.util.Iterator;
 

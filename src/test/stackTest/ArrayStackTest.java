@@ -4,7 +4,7 @@ import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
 
-import material.linear.stack.ArrayStack;
+import structures.linear.stack.ArrayStack;
 import org.junit.Test;
 
 /**

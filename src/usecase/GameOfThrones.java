@@ -1,12 +1,8 @@
 package usecase;
 
-import material.Position;
-import material.tree.iterators.BFSIterator;
-import material.tree.iterators.PreorderIterator;
-import material.tree.narytree.LinkedTree;
+import structures.Position;
+import structures.tree.narytree.LinkedTree;
 
-import java.io.File;
-import java.util.Iterator;
 import java.util.LinkedList;
 
 public class GameOfThrones<t1> {
