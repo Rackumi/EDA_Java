@@ -1,13 +1,5 @@
-package structures.linear.list;/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package structures.linear.list;
 
-/**
- *
- * @author mayte
- */
 public class FloatLinkedList implements FloatList{
 
     private class FloatNode {
@@ -57,25 +49,28 @@ public class FloatLinkedList implements FloatList{
             head = node;
         }
         else{
-            node.setNext(head.getNext());
-            head.setNext(node);
+            node.setNext(head);
+            head = node;
         }
+        this.size++;
     }
 
     @Override
     public void add(int index, Float value) {
         FloatNode node = new FloatNode(value);
         if(isempty()){
-            head.setNext(node);
+            head = node;
         }
         else{
-            node.setNext(head.getNext());
-            head.setNext(node);
+            node.setNext(head);
+            head = node;
         }
+        this.size++;
     }
 
     @Override
     public Float remove() {
+        this.size--;
         if(isempty()){
             head.setNext(null);
             return null;
@@ -88,27 +83,76 @@ public class FloatLinkedList implements FloatList{
 
     @Override
     public Float remove(int index) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.size--;
+        if(isempty()){
+            head.setNext(null);
+            return null;
+        }
+        else{
+            head.setNext(head.getNext().getNext());
+            return head.getNext().getElement();
+        }
+
     }
 
     @Override
     public Float get() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(isempty()){
+            return null;
+        }
+        else{
+            return head.getNext().getElement();
+        }
     }
 
     @Override
     public Float get(int index) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(isempty()){
+            return null;
+        }
+        else{
+            return head.getNext().getElement();
+        }
     }
 
     @Override
     public int search(Float value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(!isempty()) {
+            if (head.getElement().equals(value)) {
+                return this.size+1-1;
+            }
+            else {
+                int auxNum = 0;
+                FloatNode aux = head;
+                while(aux.getNext()!=null && !aux.getNext().getElement().equals(value)) {
+                    auxNum++;
+                    aux = aux.getNext();
+                    if (aux.getElement().equals(value)) {
+                        return this.size+1-auxNum;
+                    }
+                }
+            }
+        }
+        return 0;
     }
 
     @Override
     public boolean contains(Float value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(!isempty()) {
+            if (head.getElement().equals(value)) {
+                return true;
+            }
+            else {
+                FloatNode aux = head;
+                while(aux.getNext()!=null && !aux.getNext().getElement().equals(value)) {
+                    aux = aux.getNext();
+                    if (aux.getElement().equals(value)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
     
 }
